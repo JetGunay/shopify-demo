@@ -1,2 +1,50 @@
-header, body {
-  background-color: green; }
+header,
+body.gradient,
+.header-wrapper {
+  background: #fff; }
+
+a,
+a.link {
+  text-decoration: none; }
+
+.display-none {
+  display: none; }
+
+.justify-between {
+  display: flex;
+  justify-content: space-between; }
+
+/*
+announcement bar
+*/
+.announcement-bar__message {
+  font-size: 15px;
+  font-weight: 700; }
+
+/*
+header nav
+*/
+.header-wrapper {
+  border-bottom: 1px solid #000; }
+
+.header a {
+  font-size: 15px;
+  text-transform: uppercase;
+  letter-spacing: 1px; }
+
+.header .list-menu,
+.header .header__icons {
+  column-gap: 25px; }
+
+.header .header__menu-item {
+  font-weight: bold; }
+
+.header .header__icon {
+  width: 100%;
+  padding: 0 10px; }
+
+/*
+image with slider
+*/
+.image-slider-container {
+  background-color: var(--slider-bg-color); }

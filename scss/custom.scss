@@ -2,6 +2,148 @@ $color-red: #da0f0f;
 $color-green: green;
 $color-coral: coral;
 
-header, body {
-  background-color: $color-green;
+$body-color: #fff;
+
+// $mobile-width: 425px;
+// $tablet-width: 750px;
+// $desktop-width: 1024px;
+
+// @media screen and (min-width: #{$tablet-width}) {
+//   .image-slider-wrapper {
+//     min-height: 860px;
+//   }
+
+//   .left-image {
+//     .banner__media {
+//       width: 50%;
+//     }
+//   }
+// }
+
+// @media screen and (max-width: #{$mobile-width}) {
+//   .grid--1-col-mobile .grid__item {
+//     width: 100%;
+//     max-width: 100%;
+//   }
+
+//   .image-slider-wrapper {
+//     .grid__item {
+//       min-height: 450px;
+//     }
+//   }
+
+//   .left-image {
+//     .media>*:not(.zoom):not(.deferred-media__poster-button) {
+//       height: auto;
+//     }
+//   }
+// }
+
+header, 
+body.gradient,
+.header-wrapper {
+  background: $body-color;
 }
+
+a,
+a.link {
+  text-decoration: none;
+}
+
+.display-none {
+  display: none;
+}
+
+.justify-between {
+  display: flex;
+  justify-content: space-between;
+}
+
+/*
+announcement bar
+*/
+.announcement-bar__message {
+  font-size: 15px;
+  font-weight: 700;
+}
+
+/*
+header nav
+*/
+.header-wrapper {
+  border-bottom: 1px solid #000;
+}
+
+.header {
+  a {
+    font-size: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .list-menu,
+  .header__icons {
+    column-gap: 25px;
+  }
+
+  .header__menu-item {
+    font-weight: bold;
+  }
+
+  .header__icon {
+    width: 100%;
+    padding: 0 10px;
+  }
+}
+
+/*
+image with slider
+*/
+.image-slider-container {
+  background-color: var(--slider-bg-color);
+}
+// .image-slider-wrapper {
+//   display: block;
+//   // min-height: 100vh;
+//   min-height: 860px;
+//   background-color: var(--slider-bg-color);
+
+//   .right-slider {
+//     .slider-wrapper {
+//       // left: 50%;
+//       background-color: var(--slider-bg-color);
+//       // background-color: #3d2e1f;
+//       height: 100%;
+//     }
+
+//     .slider-items {
+//       width: 50%;
+//       // min-height: 100vh;
+//       // min-height: 860px;
+//       display: flex;
+//       margin: 0 auto;
+//       align-items: center;
+
+//       .item {
+//         display: flex;
+//         flex-direction: column;
+//         align-items: center;
+//         gap: 20px;
+//       }
+
+//       .banner__media {
+//         height: 400px;
+//         width: 400px;
+//       }
+
+//       .banner__media,
+//       svg {
+//         position: relative;
+//       }
+
+//       .slider-button {
+//         width: 100%;
+//       }
+//     }
+//   }
+// }
