@@ -1,5 +1,110 @@
 {
   "sections": {
+    "image_with_slider": {
+      "type": "image-with-slider",
+      "blocks": {
+        "slide_image_jkc4zY": {
+          "type": "slide_image",
+          "settings": {
+            "slide_image": "shopify://shop_images/HOUSE_ESPRESSO_COLOMBIA_LA_FALDA.webp",
+            "button_text": "Shop House Espresso",
+            "button_url": ""
+          }
+        },
+        "slide_image_xhaAqq": {
+          "type": "slide_image",
+          "settings": {
+            "slide_image": "shopify://shop_images/brew_gear_web.jpg",
+            "button_text": "Shop Brew Gear",
+            "button_url": ""
+          }
+        },
+        "slide_image_pG67qD": {
+          "type": "slide_image",
+          "settings": {
+            "slide_image": "shopify://shop_images/homeware_web.webp",
+            "button_text": "Shop Homewares",
+            "button_url": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_image_jkc4zY",
+        "slide_image_xhaAqq",
+        "slide_image_pG67qD"
+      ],
+      "settings": {
+        "image": "shopify://shop_images/website_landing_page_alex.webp",
+        "slider_bg_color": "#3d2e1f",
+        "slider_speed": 5,
+        "auto_slide": false
+      }
+    },
+    "three_column_text_w8Lf3c": {
+      "type": "three-column-text",
+      "blocks": {
+        "left_column_yTDmaV": {
+          "type": "left_column",
+          "settings": {
+            "column_left_title": "Wholesale",
+            "column_left_url": "shopify://collections"
+          }
+        },
+        "middle_column_miY346": {
+          "type": "middle_column",
+          "settings": {
+            "column_mid_title": "Specialty coffee, served with style.",
+            "column_mid_url": ""
+          }
+        },
+        "right_column_9pkhNR": {
+          "type": "right_column",
+          "settings": {
+            "column_right_title": "Subscription",
+            "column_right_url": "shopify://collections"
+          }
+        }
+      },
+      "block_order": [
+        "left_column_yTDmaV",
+        "middle_column_miY346",
+        "right_column_9pkhNR"
+      ],
+      "settings": {
+        "layout_width": "full-width",
+        "padding_top": 40,
+        "padding_bottom": 40
+      }
+    },
+    "featured_collection": {
+      "type": "featured-collection",
+      "settings": {
+        "fc_layout": "row",
+        "title": "Shop Now",
+        "heading_size": "h2",
+        "description": "<p>The seasonal coffee menu on offer at every Skittle Lane venue is also available to purchase in 250g and 1kg packages.</p><p>Everything from our cardboard boxes to our foil-free bags is recyclable or compostable; and looks as good on the outside as it tastes on the inside.</p><p>Whether you're a beginner brewer or an experienced barista, we've designed the whole Skittle Lane experience so it can come home with you - including our curated collection of equipment, wares and interiors too. </p>",
+        "show_description": false,
+        "description_style": "body",
+        "collection": "all",
+        "products_to_show": 8,
+        "columns_desktop": 2,
+        "full_width": true,
+        "show_view_all": false,
+        "view_all_style": "solid",
+        "enable_desktop_slider": true,
+        "color_scheme": "scheme-1",
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "enable_quick_add": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": true,
+        "padding_top": 20,
+        "padding_bottom": 20
+      }
+    },
     "image_banner": {
       "type": "image-banner",
       "blocks": {
@@ -14,7 +119,7 @@
           "type": "buttons",
           "settings": {
             "button_label_1": "Shop all",
-            "button_link_1": "shopify:\/\/collections\/all",
+            "button_link_1": "shopify://collections/all",
             "button_style_secondary_1": true,
             "button_label_2": "",
             "button_link_2": "",
@@ -26,6 +131,7 @@
         "heading",
         "button"
       ],
+      "disabled": true,
       "settings": {
         "image_overlay_opacity": 40,
         "image_height": "large",
@@ -39,37 +145,80 @@
         "show_text_below": false
       }
     },
-    "featured_collection": {
-      "type": "featured-collection",
+    "multicolumn_Qwq8LV": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_CXA4gm": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/king_st_website.webp",
+            "title": "SYDNEY CBD | 40 KING ST SYDNEY 2000",
+            "text": "",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_yKDTfT": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/bondi_web.jpg",
+            "title": "BONDI | 135 CURLEWIS ST BONDI BEACH 2026",
+            "text": "",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_rnGrYD": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/manly_website.jpg",
+            "title": "MANLY | 83 PITTWATER ROAD MANLY 2095",
+            "text": "",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_xr7U4p": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/CQ_WEB_2.webp",
+            "title": "CIRCULAR QUAY | 6A LOFTUS LANE CQ 2000",
+            "text": "",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_CXA4gm",
+        "column_yKDTfT",
+        "column_rnGrYD",
+        "column_xr7U4p"
+      ],
       "settings": {
-        "title": "Featured products",
-        "heading_size": "h2",
-        "description": "",
-        "show_description": false,
-        "description_style": "body",
-        "collection": "all",
-        "products_to_show": 8,
+        "layout_width": "full-width",
+        "title": "",
+        "heading_size": "h1",
+        "image_width": "full",
+        "image_ratio": "portrait",
         "columns_desktop": 4,
-        "full_width": false,
-        "show_view_all": true,
-        "view_all_style": "solid",
-        "enable_desktop_slider": false,
-        "color_scheme": "scheme-1",
-        "image_ratio": "adapt",
-        "image_shape": "default",
-        "show_secondary_image": true,
-        "show_vendor": false,
-        "show_rating": false,
-        "enable_quick_add": false,
+        "column_alignment": "center",
+        "background_style": "primary",
+        "button_label": "",
+        "button_link": "",
+        "color_scheme": "",
         "columns_mobile": "2",
         "swipe_on_mobile": false,
-        "padding_top": 44,
-        "padding_bottom": 36
+        "padding_top": 20,
+        "padding_bottom": 20
       }
     }
   },
   "order": [
+    "image_with_slider",
+    "three_column_text_w8Lf3c",
+    "featured_collection",
     "image_banner",
-    "featured_collection"
+    "multicolumn_Qwq8LV"
   ]
 }

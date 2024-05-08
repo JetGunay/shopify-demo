@@ -5,7 +5,8 @@ body.gradient,
 
 a,
 a.link {
-  text-decoration: none; }
+  text-decoration: none;
+  color: inherit; }
 
 .display-none {
   display: none; }
@@ -41,10 +42,9 @@ header nav
 
 .header .header__icon {
   width: 100%;
-  padding: 0 10px; }
+  padding: 0 10px;
+  text-wrap: nowrap; }
 
 /*
 image with slider
 */
-.image-slider-container {
-  background-color: var(--slider-bg-color); }

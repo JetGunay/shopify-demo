@@ -4,15 +4,44 @@
   "sections": {
     "footer": {
       "type": "footer",
+      "blocks": {
+        "text_UNneCJ": {
+          "type": "text",
+          "settings": {
+            "heading": "Opening Hours",
+            "subtext": "<p><strong>Sydney CBD</strong></p><p>Monday - Friday: 7:00am - 4.00pm</p><p><strong>Circular Quay</strong></p><p>Monday - Friday: 7:00am - 4.00pm</p><p><strong>Bondi Beach</strong></p><p>Monday - Friday: 6.30am - 2pm<br/>Saturday + Sunday: 7am - 3pm</p><p><strong>Manly Beach</strong></p><p>Monday - Sunday: 7am -2pm</p>"
+          }
+        },
+        "text_Apw3xT": {
+          "type": "text",
+          "settings": {
+            "heading": "Contact",
+            "subtext": "<p>General: <a href=\"mailto:info@skittlelane.com\" target=\"_blank\" title=\"mailto:info@skittlelane.com.au\">info@skittlelane.com.au</a></p><p>Online orders: <a href=\"mailto:info@skittlelane.com\" target=\"_blank\" title=\"mailto:online@skittlelane.com.au\">online@skittlelane.com.au</a></p><p>Wholesale: <a href=\"mailto:wholesale@skittlelane.com\" target=\"_blank\" title=\"mailto:wholesale@skittlelane.com.au\">wholesale@skittlelane.com.au</a></p>"
+          }
+        },
+        "text_qxwpp4": {
+          "type": "text",
+          "settings": {
+            "heading": "Interested in joining our team?",
+            "subtext": "<p><a href=\"/pages/contact\" title=\"Contact\">We'd love to hear from you.</a></p>"
+          }
+        }
+      },
+      "block_order": [
+        "text_UNneCJ",
+        "text_Apw3xT",
+        "text_qxwpp4"
+      ],
       "settings": {
+        "layout_width": "full-width",
         "color_scheme": "scheme-1",
-        "newsletter_enable": true,
+        "newsletter_enable": false,
         "newsletter_heading": "Subscribe to our emails",
-        "enable_follow_on_shop": true,
-        "show_social": true,
-        "enable_country_selector": true,
-        "enable_language_selector": true,
-        "payment_enable": true,
+        "enable_follow_on_shop": false,
+        "show_social": false,
+        "enable_country_selector": false,
+        "enable_language_selector": false,
+        "payment_enable": false,
         "show_policy": false,
         "margin_top": 0,
         "padding_top": 36,

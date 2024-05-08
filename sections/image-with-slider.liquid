@@ -2,6 +2,7 @@
 .image-slider-container {
   display: flex;
   max-height: 100vh;
+  background-color: var(--slider-bg-color);
 }
 
 .image-column {
@@ -140,18 +141,12 @@
 
 <script src="{{ 'image-slider.js' | asset_url }}" defer="defer"></script>
 
-<script>
-
-  {% comment %} var mytext = '{{disp_custom_price}}'; {% endcomment %}
-  
-  </script>
-
 {%- liquid
   assign widths = '375, 550, 750, 1100, 1500, 1780, 2000, 3000, 3840'
 -%}
 
 <section class="section-{{ section.id }}">
-  <div class="image-slider-container {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}" style="--slider-bg-color: {{ section.settings.slider_bg_color }};">
+  <div class="image-slider-container{% if section.settings.layout_width == 'page-width' %} page-width {% else %} full-width {% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}" style="--slider-bg-color: {{ section.settings.slider_bg_color }};">
     <div class="image-column">
       {% comment %} <img src="left-image.jpg" alt="Left Image"> {% endcomment %}
       {% comment %} {{ 'hero-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }} {% endcomment %}
@@ -338,6 +333,22 @@
     "tag": "section",
     "limit": 1,
     "settings": [
+      {
+        "type": "select",
+        "id": "layout_width",
+        "options": [
+          {
+            "value": "full-width",
+            "label": "Full width"
+          },
+          {
+            "value": "page-width",
+            "label": "Page width"
+          }
+        ],
+        "default": "full-width",
+        "label": "Layout width"
+      },
       {
         "type": "image_picker",
         "id": "image",

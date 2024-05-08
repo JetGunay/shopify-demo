@@ -48,6 +48,7 @@ body.gradient,
 a,
 a.link {
   text-decoration: none;
+  color: inherit;
 }
 
 .display-none {
@@ -93,15 +94,21 @@ header nav
   .header__icon {
     width: 100%;
     padding: 0 10px;
+    text-wrap: nowrap;
   }
 }
 
 /*
 image with slider
 */
-.image-slider-container {
-  background-color: var(--slider-bg-color);
-}
+// .image-slider-container {
+//   background-color: var(--slider-bg-color);
+// }
+
+// .image-slider-container {
+//   background-color: #000;
+// }
+
 // .image-slider-wrapper {
 //   display: block;
 //   // min-height: 100vh;

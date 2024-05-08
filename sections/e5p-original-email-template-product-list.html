@@ -1,0 +1,303 @@
+{{assign "orderDetail" (get section.settings.data_source metafields)}}{{assign "productListMaxLength" 19}}{{assign "productListMaxLengthMore" 20}}{{#each (arrayify orderDetail)}}{{#if (and this.productList this.productList.length)}}
+<!--[if mso | IE]><table align="center" border="0" cellpadding="0" cellspacing="0" class="pg-product-list-{{../section.id}}-outlook" role="presentation" style="width:{{theme.settings.page_margins}};" width="NaN" ><tr><td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;"><![endif]-->
+<div class="pg-product-list-{{../section.id}}" style="margin:0px auto;max-width:{{theme.settings.page_margins}};">
+  <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;">
+    <tbody>
+      <tr>
+        <td style="direction:ltr;font-size:0px;padding:50px 10px;text-align:center;">
+          <!--[if mso | IE]><table role="presentation" border="0" cellpadding="0" cellspacing="0"><tr><![endif]-->
+          <style>
+            .mjml-root .pg-product-list-{{../section.id}} * {
+            font-family: {{#if (eq ../section.settings.component_font_family.font-family 'inherit')}} inherit {{else}} {{../section.settings.component_font_family.font-family}} !important{{/if}};
+            }
+            {{#if ../section.settings.component_font_family.font-url}}
+            @font-face {
+            font-family: {{../section.settings.component_font_family.font-family}};
+            src: url({{../section.settings.component_font_family.font-url}});
+            }
+            {{/if}}
+          </style>
+          <!--[if mso | IE]><td class="" style="vertical-align:top;width:NaNpx;" ><![endif]-->
+          <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:{{#if rtlConf.isRtl}}rtl{{else}}ltr{{/if}};display:inline-block;vertical-align:top;width:100%;">
+            <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%">
+              <tbody>
+                <tr>
+                  <td style="background-color:#f8f9fb;border-radius:6px;vertical-align:top;padding:{{../section.settings.padding.pc.top}}px {{../section.settings.padding.pc.right}}px {{../section.settings.padding.pc.bottom}}px {{../section.settings.padding.pc.left}}px;">
+                    <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%">
+                      <tbody>
+                        {{#if ../section.settings.title}}
+                        <tr>
+                          <td dir="{{#if @root.rtlConf.isRtl}}rtl{{else}}ltr{{/if}}" class="product-info-title" style="font-size: 0px; padding: 0; word-break: break-word">
+                            <div style="font-size: 18px;font-weight: 600;line-height: 25px;text-align: start;color: #1e1e1e;">
+                              {{#if (isArray ../orderDetail) }} {{default ../section.settings.title (t "productList.orderSeq")}} {{#if this.orderSeq}} #{{this.orderSeq}} {{/if}} {{else}} {{../section.settings.title}} {{#if this.productCount}}（ {{this.productCount}} ）{{/if}} {{/if}}
+                            </div>
+                          </td>
+                        </tr>
+                        {{/if}}{{#each this.productList}} {{#if (lte @index ../../productListMaxLength)}}
+                        <tr>
+                          <td>
+                            <table cellpadding="0" cellspacing="0" width="100%" border="0" style="color: #1e1e1e;font-size: 13px;table-layout: auto;width: 100%;border: none;margin: 20px 0;">
+                              <tr style="display: flex; direction: {{#if @root.rtlConf.isRtl}}rtl{{else}}ltr{{/if}}">
+                                <td style="{{#if @root.rtlConf.isRtl}}padding-left: 12px;{{else}}padding-right: 12px;{{/if}} vertical-align: top; width: 80px">
+                                  <img src="{{#if image}}{{image}}{{else}}https://img.myshopline.com/image/official/2e0ba7a1ae1144c1abd877c49b8e2184.png{{/if}}" width="80" height="auto" style="border: 0;border-radius: 4px;display: block;outline: none;text-decoration: none;height: auto;width: 80px;max-width: 80px;font-size: 13px;">
+                                </td>
+                                <td style="text-align: start; vertical-align: top; line-height: 22px; width: 100%">
+                                  <div style="line-height: 20px;font-size: 14px;overflow: hidden;text-overflow: ellipsis;-webkit-line-clamp: 3;-webkit-box-orient: vertical;word-break: break-word;">
+                                    {{title}}
+                                  </div>
+                                  <div style="margin-top: 8px;color: #474f5e;font-size: 14px;line-height: 20px;overflow: hidden;text-overflow: ellipsis;-webkit-line-clamp: 3;-webkit-box-orient: vertical;word-break: break-word;">
+                                    {{#if attributes}}
+                                    <div style="display: inline-block">
+                                      {{attributes}}
+                                    </div>
+                                    {{/if}} {{#if count}}
+                                    <div style="display: inline-block">
+                                      × {{count}}
+                                    </div>
+                                    {{/if}}
+                                  </div>
+                                  {{#if (and ../../section.settings.show_discount lineLevelDiscountAllocations.length)}}
+                                  <div style="margin-top: 2px">
+                                    {{#each lineLevelDiscountAllocations}}
+                                    <div style="display: flex; align-items: center; margin-top: 4px">
+                                      <img src="https://img.myshopline.com/image/official/21b06b8a5348476585cd5e3958dcbbd6.png" width="14" height="14" style="display: block;width: 14px;height: 14px;max-width: 14px;max-height: 14px;">
+                                      <span style="{{#if @root.rtlConf.isRtl}}margin-right: 5px;{{else}}margin-left: 5px;{{/if}} color: #4a4a4a; font-size: 14px; opacity: 0.8">
+                                        {{default discountApplication.title ""}}(-{{{amount}}})
+                                      </span>
+                                    </div>
+                                    {{/each}}
+                                  </div>
+                                  {{/if}} {{#if (and ../../section.settings.show_refunded refunded)}}
+                                  <div style="margin-top: 6px;color: #fe9f0f;font-size: 14px;line-height: 20px;overflow: hidden;text-overflow: ellipsis;-webkit-line-clamp: 3;-webkit-box-orient: vertical;word-break: break-word;">
+                                    Refunded
+                                  </div>
+                                  {{/if}}
+                                </td>
+                                <td style="font-weight: 500;font-size: 16px;min-width: 136px;text-align: end;vertical-align: top;line-height: 22px;">
+                                  {{#if finalLinePrice}}
+                                  <div style="text-decoration: line-through; color: #888888; font-size: 14px">
+                                    {{{price}}}
+                                  </div>
+                                  <div>
+                                    {{{finalLinePrice}}}
+                                  </div>
+                                  {{else}} {{#if ../../orderDetail.currency}} {{../../orderDetail.currency}} {{/if}} {{{price}}} {{/if}}
+                                </td>
+                              </tr>
+                            </table>
+                          </td>
+                        </tr>
+                        {{/if}} {{/each}}{{#if (gt this.productList.length ../productListMaxLengthMore)}}
+                        <tr>
+                          <td dir="{{#if @root.rtlConf.isRtl}}rtl{{else}}ltr{{/if}}" style="word-break: break-word;border: none;font-size: 14px;font-weight: 400;line-height: 20px;text-align: center;color: #747575;padding-bottom: 4px;">
+                            Please check order details for more
+                          </td>
+                        </tr>
+                        {{/if}}
+                        <tr style="direction: {{#if @root.rtlConf.isRtl}}rtl{{else}}ltr{{/if}}">
+                          <td>
+                            <table cellpadding="0" cellspacing="0" width="100%" border="0" style="color: #1e1e1e;font-size: 13px;line-height: 22px;table-layout: auto;width: 100%;border: none;margin: 16px 0;">
+                              {{#if ../section.settings.show_basic_fee}}
+                              <tr style="border-top: solid 1px #e5e5e5">
+                                <td style="padding-bottom: 16px"></td>
+                                <td></td>
+                              </tr>
+                              {{#if this.orderSubTotalAmount}}
+                              <tr>
+                                <td style="text-align: start;vertical-align: top;font-size: 14px;line-height: 20px;padding-bottom: 10px;color: #1e1e1e;">
+                                  Subtotal
+                                </td>
+                                <td style="text-align: end; vertical-align: top; padding-bottom: 10px">
+                                  {{{this.orderSubTotalAmount}}}
+                                </td>
+                              </tr>
+                              {{/if}} {{#if this.orderDiscountInfo}}
+                              <tr>
+                                <td style="text-align: start;vertical-align: top;font-size: 14px;line-height: 20px;padding-bottom: 10px;color: #1e1e1e;">
+                                  Discount
+                                </td>
+                                {{#if (eq this.orderDiscountInfo.discountShowType "APPLIED")}}
+                                <td style="text-align: end; vertical-align: top; padding-bottom: 10px">
+                                  Free Shipping
+                                </td>
+                                {{/if}} {{#if (eq this.orderDiscountInfo.discountShowType "AMOUNT")}}
+                                <td style="text-align: end; vertical-align: top; padding-bottom: 10px">
+                                  -{{{this.orderDiscountInfo.amount}}}
+                                </td>
+                                {{/if}}
+                              </tr>
+                              {{/if}} {{#if (and this.orderDiscountCodeInfos this.orderDiscountCodeInfos.discountDetailInfos (gt this.orderDiscountCodeInfos.discountDetailInfos.length 1) ) }}
+                              <tr>
+                                <td style="text-align: start;vertical-align: top;font-size: 14px;line-height: 20px;padding-bottom: 10px;color: #1e1e1e;">
+                                  Discount code
+                                </td>
+                                <td style="text-align: end; vertical-align: top; padding-bottom: 10px">
+                                  -{{{this.orderDiscountCodeInfos.amount}}}
+                                </td>
+                              </tr>
+                              {{else if this.orderDiscountCodeInfo}}
+                              <tr>
+                                <td style="text-align: start;vertical-align: top;font-size: 14px;line-height: 20px;padding-bottom: 10px;color: #1e1e1e;">
+                                  Discount code
+                                </td>
+                                {{#if (eq this.orderDiscountCodeInfo.discountShowType "APPLIED")}}
+                                <td style="text-align: end; vertical-align: top; padding-bottom: 10px">
+                                  Free Shipping
+                                </td>
+                                {{/if}} {{#if (eq this.orderDiscountCodeInfo.discountShowType "AMOUNT")}}
+                                <td style="text-align: end; vertical-align: top; padding-bottom: 10px">
+                                  -{{{this.orderDiscountCodeInfo.amount}}}
+                                </td>
+                                {{/if}}
+                              </tr>
+                              {{/if}} {{#or (eq this.orderExpressAmount 0) this.orderExpressAmount}}
+                              <tr>
+                                <td style="text-align: start;vertical-align: top;font-size: 14px;line-height: 20px;padding-bottom: 10px;color: #1e1e1e;">
+                                  Shipping
+                                </td>
+                                {{#if (eq this.orderExpressAmount 0)}}
+                                <td style="text-align: end; vertical-align: top; padding-bottom: 10px">
+                                  Free
+                                </td>
+                                {{else}}
+                                <td style="text-align: end; vertical-align: top; padding-bottom: 10px">
+                                  {{{this.orderExpressAmount}}}
+                                </td>
+                                {{/if}}
+                              </tr>
+                              {{/or}} {{#if this.orderPointsDeductAmount}}
+                              <tr>
+                                <td style="text-align: start;vertical-align: top;font-size: 14px;line-height: 20px;padding-bottom: 10px;">
+                                  Points Discount
+                                </td>
+                                <td style="text-align: end; vertical-align: top; padding-bottom: 10px">
+                                  <div>
+                                    -{{{this.orderPointsDeductAmount}}}
+                                  </div>
+                                  {{#if this.orderPointsDeductNum}}
+                                  <div style="font-size: 12px; line-height: 18px; color: #858687">
+                                    {{t "productList.cost_points" num=this.orderPointsDeductNum }}
+                                  </div>
+                                  {{/if}}
+                                </td>
+                              </tr>
+                              {{/if}} {{#if this.orderTax}}
+                              <tr>
+                                <td style="text-align: start;vertical-align: top;font-size: 14px;line-height: 20px;padding-bottom: 10px;">
+                                  Tax
+                                </td>
+                                <td style="text-align: end; vertical-align: top; padding-bottom: 10px">
+                                  {{{this.orderTax}}}
+                                </td>
+                              </tr>
+                              {{/if}} {{#if this.orderDutiesAmount}}
+                              <tr>
+                                <td style="text-align: start;vertical-align: top;font-size: 14px;line-height: 20px;padding-bottom: 10px;">
+                                  Duty
+                                </td>
+                                <td style="text-align: end; vertical-align: top; padding-bottom: 10px">
+                                  {{{this.orderDutiesAmount}}}
+                                </td>
+                              </tr>
+                              {{/if}} {{#if this.tipAmount}}
+                              <tr>
+                                <td style="text-align: start;vertical-align: top;font-size: 14px;line-height: 20px;padding-bottom: 10px;">
+                                  Tip
+                                </td>
+                                <td style="text-align: end; vertical-align: top; padding-bottom: 10px">
+                                  {{{this.tipAmount}}}
+                                </td>
+                              </tr>
+                              {{/if}} {{#if this.discountAmountExt}}
+                              <tr>
+                                <td style="text-align: start;vertical-align: top;font-size: 14px;line-height: 20px;padding-bottom: 10px;">
+                                  Seller discount
+                                </td>
+                                <td style="text-align: end; vertical-align: top; padding-bottom: 10px">
+                                  -{{{this.discountAmountExt}}}
+                                </td>
+                              </tr>
+                              {{/if}} {{#if (and ../orderDetail.adjustPriceApplications (isnt ../orderDetail.adjustPriceApplications.amount 0) ) }}
+                              <tr>
+                                <td style="text-align: start; vertical-align: top; font-size: 14px; line-height: 20px">
+                                  Rounding
+                                </td>
+                                <td style="text-align: end; vertical-align: top">
+                                  {{{this.adjustPriceApplications.amount}}}
+                                </td>
+                              </tr>
+                              {{/if}} {{/if}} {{#if (and ../section.settings.show_total (default this.totalAmount false))}}
+                              <tr>
+                                <td style="padding-bottom: 16px"></td>
+                              </tr>
+                              <tr style="border-top: solid 1px #e5e5e5">
+                                <td style="margin-top: 16px; padding-bottom: 16px"></td>
+                                <td></td>
+                              </tr>
+                              <tr>
+                                <td style="text-align: start;vertical-align: top;font-size: 18px;line-height: 1.4;font-weight: 600;">
+                                  Total
+                                </td>
+                                <td style="text-align: end;vertical-align: top;font-size: 18px;line-height: 1.4;font-weight: 500;">
+                                  {{{this.totalAmount}}}
+                                </td>
+                              </tr>
+                              {{/if}} {{#if (and ../section.settings.show_gift_card this.giftCardPayAmountList (gt this.giftCardPayAmountList.length 0) ) }}
+                              <tr>
+                                <td style="padding-bottom: 16px"></td>
+                              </tr>
+                              <tr style="border-top: solid 1px #e5e5e5">
+                                <td style="margin-top: 16px; padding-bottom: 16px"></td>
+                                <td></td>
+                              </tr>
+                              {{#each this.giftCardPayAmountList}}
+                              <tr>
+                                <td style="text-align: start;vertical-align: top;font-size: 14px;line-height: 1.4;padding-bottom: 5px;">
+                                  Gift card
+                                </td>
+                                <td style="text-align: end; vertical-align: top; font-size: 14px; line-height: 1.4">
+                                  {{{this}}}
+                                </td>
+                              </tr>
+                              {{/each}} {{/if}} {{#if (and ../section.settings.show_refund this.refundAmount)}}
+                              <tr>
+                                <td style="padding-bottom: 16px"></td>
+                              </tr>
+                              <tr style="border-top: solid 1px #e5e5e5">
+                                <td style="margin-top: 16px; padding-bottom: 16px"></td>
+                                <td></td>
+                              </tr>
+                              <tr>
+                                <td style="text-align: start; vertical-align: top; font-size: 14px; line-height: 1.4">
+                                  <div>
+                                    Refund
+                                  </div>
+                                  {{#if (and this.payChannels this.payChannels.length)}}
+                                  <div style="font-size: 12px; line-height: 18px; color: #858687">
+                                    {{#each this.payChannels}} {{#if (eq this.type "text")}} {{this.value}} {{#unlessEq @index (minus ../this.payChannels.length 1)}}, {{/unlessEq}} {{else}} {{t (append "productList." this.value)}} {{#unlessEq @index (minus ../this.payChannels.length 1) }}, {{/unlessEq}} {{/if}} {{/each}}
+                                  </div>
+                                  {{/if}}
+                                </td>
+                                <td style="text-align: end;vertical-align: top;padding-bottom: 10px;font-size: 14px;line-height: 1.4;">
+                                  {{{this.refundAmount}}}
+                                </td>
+                              </tr>
+                              {{/if}}
+                            </table>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <!--[if mso | IE]></td></tr></table><![endif]-->
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<!--[if mso | IE]></td></tr></table><![endif]-->
+{{/if}}{{/each}}

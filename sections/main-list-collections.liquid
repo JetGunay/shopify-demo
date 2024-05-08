@@ -1,7 +1,117 @@
 {{ 'component-card.css' | asset_url | stylesheet_tag }}
 {{ 'section-collection-list.css' | asset_url | stylesheet_tag }}
 
-<div class="page-width">
+{% style %}
+  .collection-products {
+    display: flex;
+    gap: 15px;
+    /* justify-content: center; */
+  }
+
+  .product a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+
+    flex-wrap: nowrap;
+    overflow: auto;
+    justify-content: start;
+  }
+
+  .tabcontent {
+    display: none;
+    padding: 6px 12px;
+    /* border: 1px solid #ccc; */
+    /* border-top: none; */
+  }
+
+  .tabcontent.show {
+    display: block;
+  }
+
+  .tablinks.active {
+    background-color: #3d2e1f;
+    color: white;
+  }
+
+  .tablinks {
+    background-color: #fff;
+    color: #3d2e1f;
+    padding: 10px 20px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    transition: 0.3s;
+    border-radius: 2px;
+    border: 1px solid #3d2e1f63;
+    font-size: 16px;
+    white-space: nowrap;
+  }
+
+  .tablinks:hover {
+    background-color: #3d2e1f;
+    color: #fff;
+  }
+
+  .full-width {
+    padding: 10px;
+  }
+
+  .collection_desc {
+    text-align: center;
+  }
+
+  .card {
+    height: auto;
+  }
+
+  .card__heading a {
+    width: 90%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .card__content {
+    display: block;
+  }
+
+  @media screen and (min-width: 750px) {
+    .full-width {
+      padding: 50px;
+    }
+
+    .tabs {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+  }
+{% endstyle %}
+
+<script>
+  function openCollection(evt, collectionName) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+      tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+      tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(collectionName).style.display = "block";
+    evt.currentTarget.className += " active";
+  }
+</script>
+
+<div class="{% if section.settings.layout_width == 'page-width' %}page-width{% else %}full-width{% endif %}">
   <h1 class="title title--primary inline-richtext{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
     {{ section.settings.title }}
   </h1>
@@ -17,13 +127,15 @@
       assign collections = collections | reverse
     endif
 
-    assign moduloResult = 28 | modulo: section.settings.columns_desktop
+  -%}
+
+  {% comment %} assign moduloResult = 28 | modulo: section.settings.columns_desktop
     assign paginate_by = 30
     if moduloResult == 0
       assign paginate_by = 28
-    endif
-  -%}
-  {%- paginate collections by paginate_by -%}
+    endif {% endcomment %}
+
+  {% comment %} {%- paginate collections by paginate_by -%}
     <ul
       class="collection-list grid grid--{{ section.settings.columns_desktop }}-col-desktop grid--{{ section.settings.columns_mobile }}-col-tablet-down"
       role="list"
@@ -45,13 +157,114 @@
       {%- endfor -%}
     </ul>
     {% render 'pagination', paginate: paginate %}
-  {%- endpaginate -%}
+  {%- endpaginate -%} {% endcomment %}
+
+
+  {% comment %} {% for collection in collections %}
+    <h2>{{ collection.title }}</h2>
+    <p>{{ collection.description }}</p>
+    <ul
+      class="collection-list grid grid--{{ section.settings.columns_desktop }}-col-desktop grid--{{ section.settings.columns_mobile }}-col-tablet-down"
+      role="list"
+    >
+      {%- for product in collection.products -%}
+        <li
+          class="collection-list__item grid__item{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+          {% if settings.animations_reveal_on_scroll %}
+            data-cascade
+            style="--animation-order: {{ forloop.index }};"
+          {% endif %}
+        >
+          {% comment %} {% render 'card-collection',
+            card_collection: collection,
+            media_aspect_ratio: section.settings.image_ratio,
+            columns: 3
+          %} {% endcomment %}
+          {% render 'card-product',
+            card_product: product,
+            media_aspect_ratio: 'adapt',
+            extend_height: true
+          %}
+        </li>
+      {%- endfor -%}
+    </ul>
+    {% comment %} <div class="collection-products">
+      {% for product in collection.products limit: 3 %}
+        <div class="product">
+          <a href="{{ product.url }}">
+            <img src="{{ product.featured_image | img_url: '300x300' }}" alt="{{ product.title }}">
+            <p>{{ product.title }}</p>
+            <p>{{ product.price | money_with_currency }}</p>
+          </a>
+        </div>
+      {% endfor %}
+    </div> {% endcomment %}
+  {% endfor %} {% endcomment %}
+
+
+  {% comment %} <div class="tabs">
+    {% for collection in collections %}
+      <button class="tablinks{% if forloop.first %} active{% endif %}" onclick="openCollection(event, '{{ collection.handle }}')">{{ collection.title }}</button>
+    {% endfor %}
+  </div> {% endcomment %}
+
+  <div class="tabs">
+    {% assign first_valid = true %}
+    {% for collection in collections %}
+      {% if collection.handle != "featured-collection" and collection.handle != "tees" %}
+        <button class="tablinks{% if first_valid %} active{% assign first_valid = false %}{% endif %}" onclick="openCollection(event, '{{ collection.handle }}')">{{ collection.title }}</button>
+      {% endif %}
+    {% endfor %}
+  </div>
+  
+  {% for collection in collections %}
+    <div id="{{ collection.handle }}" class="tabcontent{% if forloop.first %} show{% endif %}">
+      <div class="collection_desc">{{ collection.description }}</div>
+      <ul
+        class="collection-list grid grid--{{ section.settings.columns_desktop }}-col-desktop grid--{{ section.settings.columns_mobile }}-col-tablet-down"
+        role="list"
+      >
+        {%- for product in collection.products -%}
+          <li
+            class="collection-list__item grid__item{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+            {% if settings.animations_reveal_on_scroll %}
+              data-cascade
+              style="--animation-order: {{ forloop.index }};"
+            {% endif %}
+          >
+            {% render 'card-product',
+              card_product: product,
+              media_aspect_ratio: 'adapt',
+              extend_height: true
+            %}
+          </li>
+        {%- endfor -%}
+      </ul>
+    </div>
+  {% endfor %}
+
 </div>
 {% schema %}
 {
   "name": "t:sections.main-list-collections.name",
   "class": "section",
   "settings": [
+    {
+      "type": "select",
+      "id": "layout_width",
+      "options": [
+        {
+          "value": "full-width",
+          "label": "Full width"
+        },
+        {
+          "value": "page-width",
+          "label": "Page width"
+        }
+      ],
+      "default": "full-width",
+      "label": "Layout width"
+    },
     {
       "type": "inline_richtext",
       "id": "title",
@@ -117,7 +330,7 @@
       "min": 1,
       "max": 5,
       "step": 1,
-      "default": 3,
+      "default": 4,
       "label": "t:sections.main-list-collections.settings.columns_desktop.label"
     },
     {

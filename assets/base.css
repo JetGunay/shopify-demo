@@ -5,6 +5,11 @@
   --alpha-badge-border: 0.1;
 }
 
+.full-width {
+  max-width: 1920px;
+  margin: 0 auto;
+}
+
 .product-card-wrapper .card,
 .contains-card--product {
   --border-radius: var(--product-card-corner-radius);
